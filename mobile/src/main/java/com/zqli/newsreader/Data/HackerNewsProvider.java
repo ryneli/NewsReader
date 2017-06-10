@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,12 +38,17 @@ public class HackerNewsProvider {
 
     public static class HackerNewsEvent {
         String title;
+        String[] topStoryList;
         HackerNewsEvent(String title) {
             this.title = title;
+        }
+        HackerNewsEvent(String[] newsList) {
+            this.topStoryList = newsList;
         }
         public String getTitle() {
             return title;
         }
+        public String[] getTopStoryList() {return topStoryList;}
     }
 
     public void getItemAsync(final String id) {
@@ -57,6 +64,23 @@ public class HackerNewsProvider {
 
             @Override
             public void onFailure(Call<HackerNewsRawItem> call, Throwable t) {
+                Log.d(TAG, "onFailure: ");
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void getTopStoriesAsync() {
+        Call<String[]> call = hackerNewsService.getTopStories();
+        call.enqueue(new Callback<String[]>() {
+            @Override
+            public void onResponse(Call<String[]> call, Response<String[]> response) {
+                Log.d(TAG, "onResponse: " + response.body().length);
+                EventBus.getDefault().post(new HackerNewsEvent(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<String[]> call, Throwable t) {
                 Log.d(TAG, "onFailure: ");
                 t.printStackTrace();
             }
