@@ -1,5 +1,6 @@
 package com.zqli.newsreader;
 
+import android.arch.persistence.room.Room;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,11 +13,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zqli.newsreader.Data.HackerNewsProvider;
+import com.zqli.newsreader.model.AppDatabase;
+import com.zqli.newsreader.repository.DaggerNewsComponent;
+import com.zqli.newsreader.repository.NewsProvider;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     NewsListAdapter adapter;
     ArrayList<String> topStoryList;
     String[] topStoryIdList;
+    @Inject NewsProvider newsProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         hackerNewsProvider = new HackerNewsProvider();
         newsList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         newsList.setAdapter(adapter);
+
+        DaggerNewsComponent.builder().build().inject(this);
+        newsProvider.getNewsIds();
     }
 
     @Override

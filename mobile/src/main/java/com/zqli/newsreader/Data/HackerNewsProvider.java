@@ -4,10 +4,14 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.zqli.newsreader.Retrofit.DaggerRetrofitCompoment;
+import com.zqli.newsreader.Retrofit.RetrofitModule;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,20 +24,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class HackerNewsProvider {
-    private static final String BASE_URL = "https://hacker-news.firebaseio.com/v0/";
     private static final String TAG = "HackerNewsProvider";
-    private Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-            .create();
+    private static final String BASE_URL = "https://hacker-news.firebaseio.com/v0/";
+    @Inject Gson gson;
+    @Inject Retrofit retrofit;
     private HackerNewsServiceInterface hackerNewsService;
 
     public HackerNewsProvider() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+        DaggerRetrofitCompoment.builder()
+                .retrofitModule(new RetrofitModule(BASE_URL))
+                .build().Inject(this);
         hackerNewsService = retrofit.create(HackerNewsServiceInterface.class);
-
     }
 
     public static class HackerNewsEvent {
