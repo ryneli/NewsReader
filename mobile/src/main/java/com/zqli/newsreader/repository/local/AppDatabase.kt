@@ -1,4 +1,4 @@
-package com.zqli.newsreader.model
+package com.zqli.newsreader.repository.local
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase

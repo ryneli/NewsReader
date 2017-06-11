@@ -1,4 +1,4 @@
-package com.zqli.newsreader.Data;
+package com.zqli.newsreader.repository.network;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package com.zqli.newsreader;
 
-import android.arch.persistence.room.Room;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.zqli.newsreader.Data.HackerNewsProvider;
-import com.zqli.newsreader.model.AppDatabase;
+import com.zqli.newsreader.repository.network.HackerNewsProvider;
 import com.zqli.newsreader.repository.DaggerNewsComponent;
 import com.zqli.newsreader.repository.NewsProvider;
 

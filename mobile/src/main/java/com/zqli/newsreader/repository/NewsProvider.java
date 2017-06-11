@@ -1,8 +1,6 @@
 package com.zqli.newsreader.repository;
 
-import com.zqli.newsreader.model.News;
-
-import javax.inject.Singleton;
+import com.zqli.newsreader.repository.local.News;
 
 /**
  * Created by zhenqiangli on 6/11/17.

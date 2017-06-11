@@ -1,15 +1,12 @@
-package com.zqli.newsreader.Data;
+package com.zqli.newsreader.repository.network;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.zqli.newsreader.Retrofit.DaggerRetrofitCompoment;
-import com.zqli.newsreader.Retrofit.RetrofitModule;
+import com.zqli.newsreader.retrofit.DaggerRetrofitCompoment;
+import com.zqli.newsreader.retrofit.RetrofitModule;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -17,7 +14,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by zhenqiangli on 6/7/17.

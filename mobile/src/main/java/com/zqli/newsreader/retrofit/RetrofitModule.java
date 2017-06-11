@@ -1,4 +1,4 @@
-package com.zqli.newsreader.Retrofit;
+package com.zqli.newsreader.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

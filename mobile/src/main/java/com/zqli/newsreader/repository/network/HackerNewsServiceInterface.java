@@ -1,6 +1,4 @@
-package com.zqli.newsreader.Data;
-
-import java.util.ArrayList;
+package com.zqli.newsreader.repository.network;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

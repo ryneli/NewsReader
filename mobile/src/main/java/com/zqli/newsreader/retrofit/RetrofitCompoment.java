@@ -1,6 +1,6 @@
-package com.zqli.newsreader.Retrofit;
+package com.zqli.newsreader.retrofit;
 
-import com.zqli.newsreader.Data.HackerNewsProvider;
+import com.zqli.newsreader.repository.network.HackerNewsProvider;
 
 import dagger.Component;
 

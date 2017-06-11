@@ -1,4 +1,4 @@
-package com.zqli.newsreader.Data;
+package com.zqli.newsreader.repository.network;
 
 /**
  * Created by zhenqiangli on 6/8/17.

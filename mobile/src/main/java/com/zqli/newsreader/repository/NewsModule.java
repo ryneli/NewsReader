@@ -4,9 +4,8 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.util.Log;
 
-import com.zqli.newsreader.model.AppDatabase;
+import com.zqli.newsreader.repository.local.AppDatabase;
 
-import javax.inject.Scope;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -25,6 +24,7 @@ public class NewsModule {
     }
 
     @Provides
+    @Singleton
     AppDatabase getAppDatabase(Context context) {
         return Room.databaseBuilder(context,
                 AppDatabase.class, "database-name").build();
